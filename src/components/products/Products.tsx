@@ -71,24 +71,6 @@ export default function Products() {
             header: "Price",
             cell: (info) => info.getValue() || "N/A",
         },
-        {
-            accessorKey: "createdAt",
-            header: "Created At",
-            cell: (info) => {
-                const value = info.getValue() as string;
-                const date = new Date(value);
-                return isNaN(date.getTime()) ? "N/A" : date.toLocaleDateString();
-            },
-        },
-        {
-            accessorKey: "updatedAt",
-            header: "Updated At",
-            cell: (info) => {
-                const value = info.getValue() as string;
-                const date = new Date(value);
-                return isNaN(date.getTime()) ? "N/A" : date.toLocaleDateString();
-            },
-        },
     ];
 
 
@@ -128,17 +110,18 @@ export default function Products() {
     };
 
     return (
-        <div className="px-8 py-10">
-            <div className="flex items-center justify-between">
+        <div>
+            <div className="flex items-center px-8 py-10 justify-between">
                 <h1 className="text-3xl font-bold text-[#857B74] drop-shadow-lg">
                     Products
                 </h1>
+
                 <Button
-                    className="btn-primary"
+                    className="btn-primary hover:bg-custom-beige"
                     onClick={() => router.push("/products/newproduct")}
                 >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create new product
+                    new product
                 </Button>
             </div>
             <DataTable<DataWithId, unknown>

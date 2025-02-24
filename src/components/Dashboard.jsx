@@ -18,7 +18,7 @@ export default function Dashboard() {
       const token = localStorage.getItem('authtoken'); // Retrieve token from localStorage
 
       try {
-        if(!token){
+        if (!token) {
           console.error("No token found in localStorage");
         }
         // count orders confirmed
@@ -57,7 +57,10 @@ export default function Dashboard() {
 
   return (
     <div className="px-8 py-10">
-      <p className="text-heading2-bold">Dashboard</p>
+      <h1 className="text-3xl font-bold text-[#857B74] drop-shadow-lg">
+        Dashboard
+      </h1>
+
       <Separator className="bg-grey-1 my-5" />
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-10">

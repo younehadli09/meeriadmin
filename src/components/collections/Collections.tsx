@@ -98,10 +98,6 @@ const CollectionsPage = () => {
             header: "Name",
         },
         {
-            accessorKey: "description",
-            header: "Description",
-        },
-        {
             accessorKey: "typestore",
             header: "Store",
         },
@@ -110,18 +106,21 @@ const CollectionsPage = () => {
 
     return (
         <div>
-            <div className="flex items-center justify-between p-4">
-                <h1 className="text-3xl font-bold text-[#857B74] drop-shadow-lg">
+            <div className="flex items-center px-8 py-10 justify-between">
+                <h1 className="text-3xl  mr-2  font-bold text-[#857B74] drop-shadow-lg">
                     Collections
                 </h1>
+
                 <Button
-                    variant="default"
-                    onClick={() => router.push("/collections/CreateCollection")}
+                    className="btn-primary hover:bg-custom-beige"
+                    onClick={() => router.push("/products/newproduct")}
                 >
-                    <Plus className="h-5 w-5 mr-2" />
-                    Create new Collection
+                    <Plus className="h-4 w-4 mr-2" />
+                    new collection
                 </Button>
             </div>
+
+
 
             <DataTable<DataWithId, unknown>
                 columns={columns as ColumnDef<DataWithId, unknown>[]}

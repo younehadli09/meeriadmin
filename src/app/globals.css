@@ -13,7 +13,7 @@ body,
 input,
 textarea {
   @apply border-2 border-brown-gray rounded-md px-4 py-2 w-full;
-  @apply mb-3 focus:ring focus:ring-blue-200 focus:border-custom-brown;
+  @apply mb-3 focus:ring focus:ring-[#262220] focus:border-custom-brown;
 }
 
 
@@ -29,12 +29,15 @@ h1 {
 }
 
 .btn-primary {
-  @apply bg-custom-beige border-2 text-custom-white px-4 py-1 border-custom-beige rounded-md px-6 py-2;
-  @apply mt-4 font-medium text-lg transition-all duration-300 ease-in-out;
+  @apply bg-custom-beige border-2 text-custom-white border-custom-beige rounded-md;
+  @apply mt-4 font-medium transition-all duration-300 ease-in-out;
+  @apply px-4 py-2 sm:px-6 sm:py-3;
+  @apply text-sm sm:text-lg;
 }
 
+
 .btn-primary:hover {
-  @apply text-custom-brown bg-custom-beige border-custom-brown
+  @apply text-custom-brown bg-custom-brown border-custom-brown
 }
 
 
@@ -43,7 +46,7 @@ table.basic {
 }
 
 table.basic thead tr td {
-  @apply bg-blue-100;
+  @apply bg-custom-beige;
 }
 
 table.basic tr td {
@@ -357,21 +360,7 @@ input {
   margin-right: 10px;
 }
 
-.btn-primary {
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
 
-.btn-primary {
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.btn-primary:hover {
-  @apply bg-custom-beige;
-}
 
 @layer components {
   .modern-card {
@@ -388,10 +377,6 @@ input {
 
   .modern-card-btn {
     @apply px-6 py-2 rounded-lg transition-all duration-200;
-  }
-
-  .modern-card-btn-primary {
-    @apply bg-blue-600 text-white hover:bg-blue-700;
   }
 
   .modern-card-btn-danger {
