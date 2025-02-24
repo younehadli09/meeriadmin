@@ -111,8 +111,8 @@ export default function Products() {
 
     return (
         <div>
-            <div className="flex items-center px-8 py-10 justify-between">
-                <h1 className="text-3xl font-bold text-[#857B74] drop-shadow-lg">
+            <div className="flex items-center px-8 py-10 xl:mx-10 justify-between">
+                <h1 className="lg:text-4xl text-3xl font-bold text-[#857B74] drop-shadow-lg">
                     Products
                 </h1>
 

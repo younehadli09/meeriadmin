@@ -128,34 +128,26 @@ export default function Orders() {
 
 
     const columns: ColumnDef<Order>[] = [
-        {
-            accessorKey: "id",
-            header: "ID",
-            cell: (info) => info.getValue() || "N/A",
-        },
+
         {
             accessorKey: "user.username",
             header: "Ordered By",
             cell: (info) => info.getValue() || "N/A",
         },
-        {
-            accessorKey: "quantityOrder",
-            header: "Number",
-            cell: (info) => info.getValue() || "N/A",
-        },
+
         {
             accessorKey: "totalprice",
             header: "Total",
             cell: (info) => info.getValue() || "N/A",
         },
         {
-            accessorKey: "dateordered",
-            header: "Ordered At",
+            accessorKey: "status",
+            header: "State",
             cell: (info) => info.getValue() || "N/A",
         },
         {
-            accessorKey: "status",
-            header: "State",
+            accessorKey: "dateordered",
+            header: "Ordered At",
             cell: (info) => info.getValue() || "N/A",
         },
     ];
@@ -165,9 +157,11 @@ export default function Orders() {
     };
 
     return (
-        <div >
+        <div className="px-8 py-10 xl:mx-10 ">
             <div className="flex items-center justify-between">
-                <p className="text-heading1-bold">Orders List</p>
+                <h1 className="lg:text-4xl text-3xl font-bold text-[#857B74] drop-shadow-lg">
+                    Orders
+                </h1>
             </div>
             <DataTable<Order, unknown>
                 columns={columns as ColumnDef<Order, unknown>[]}

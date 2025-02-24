@@ -56,14 +56,14 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="px-8 py-10">
-      <h1 className="text-3xl font-bold text-[#857B74] drop-shadow-lg">
+    <div className="px-8 py-10 xl:mx-10">
+      <h1 className="lg:text-4xl text-3xl font-bold text-[#857B74] drop-shadow-lg">
         Dashboard
       </h1>
 
-      <Separator className="bg-grey-1 my-5" />
+      <Separator className="bg-grey-1  my-5" />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-10">
         <Card>
           <CardHeader className="flex flex-row justify-between items-center">
             <CardTitle>Total Revenue</CardTitle>
@@ -75,8 +75,8 @@ export default function Dashboard() {
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row justify-between items-center">
-            <CardTitle>Total Orders confirmed</CardTitle>
+          <CardHeader className="flex flex-row justify-between items-center ">
+            <CardTitle >Total Orders confirmed</CardTitle>
             <ShoppingBag className="max-sm:hidden" />
           </CardHeader>
           <CardContent>
