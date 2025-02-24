@@ -70,6 +70,26 @@ const CollectionsPage = () => {
             alert("Failed to delete the collection. Please try again.");
         }
     };
+    const handleUpdateCollectionAction = async (updatedData: DataWithId) => {
+        try {
+            const response = await axios.put(
+                `${process.env.NEXT_PUBLIC_IPHOST ?? ""}/StoreAPI/categories/update/${updatedData._id}`,
+                updatedData,
+                {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('authtoken')}` },
+                }
+            );
+            if (response.status === 200) {
+                setCategories((prev) =>
+                    prev.map((item) => (item._id === updatedData._id ? updatedData as Collection : item))
+                );
+                alert("Collection updated successfully!");
+            }
+        } catch (error) {
+            console.error("Error updating collection:", error);
+            alert("Failed to update the collection. Please try again.");
+        }
+    };
 
     const columns: ColumnDef<DataWithId, unknown>[] = [
         {
@@ -106,8 +126,8 @@ const CollectionsPage = () => {
 
     return (
         <div>
-             <div className="flex items-center px-8 py-10 xl:mx-10 justify-between">
-             <h1 className="lg:text-4xl text-3xl font-bold text-[#857B74] drop-shadow-lg">
+            <div className="flex items-center px-8 py-10 xl:mx-10 justify-between">
+                <h1 className="lg:text-4xl text-3xl font-bold text-[#857B74] drop-shadow-lg">
                     Collections
                 </h1>
 
@@ -128,6 +148,8 @@ const CollectionsPage = () => {
                 searchKey="name"
                 editLinkBase="/collections/edit"
                 onDeleteAction={handleDeleteCollectionAction}
+                onUpdateAction={handleUpdateCollectionAction}
+
             />
 
 

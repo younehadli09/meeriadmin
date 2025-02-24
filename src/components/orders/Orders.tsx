@@ -169,6 +169,8 @@ export default function Orders() {
                 searchKey="status"
                 editLinkBase="/collections/edit"
                 onDeleteAction={handleDeleteProduct}
+                onUpdateAction={() => { }}
+
             />
 
 

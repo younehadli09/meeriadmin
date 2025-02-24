@@ -108,6 +108,26 @@ export default function Products() {
             alert("Failed to delete the product. Please try again.");
         }
     };
+    const handleUpdateProductAction = async (updatedData: DataWithId) => {
+        try {
+            const response = await axios.put(
+                `${process.env.NEXT_PUBLIC_IPHOST ?? ""}StoreAPI/products/productPOST`,
+                updatedData,
+                {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('authtoken')}` },
+                }
+            );
+            if (response.status === 200) {
+                setProducts((prev) =>
+                    prev.map((item) => (item._id === updatedData._id ? updatedData as Collection : item))
+                );
+                alert("Product updated successfully!");
+            }
+        } catch (error) {
+            console.error("Error updating collection:", error);
+            alert("Failed to update this product. Please try again.");
+        }
+    };
 
     return (
         <div>
@@ -130,6 +150,7 @@ export default function Products() {
                 searchKey="name"
                 editLinkBase="/collections/edit"
                 onDeleteAction={handleDeleteProduct}
+                onUpdateAction={handleUpdateProductAction}
             />
 
 
