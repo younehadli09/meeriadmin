@@ -109,17 +109,42 @@ export default function Products() {
         }
     };
     const handleUpdateProductAction = async (updatedData: DataWithId) => {
-        try {
-            const response = await axios.put(
-                `${process.env.NEXT_PUBLIC_IPHOST ?? ""}StoreAPI/products/productPOST`,
-                updatedData,
+        try { // doka henaya zidi wsh thbi lihaba dirilhom update for example                     description: "${updatedData.description}"
+
+            // okeeyyyy thanks and sorry :( mafi sorry nkhdmo kif kif  testiha ou 9olili 
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_IPHOST}/StoreAPI/products/productPOST`,
+                {
+                    query: `
+                    mutation {
+            productUpdate(input: {
+                _id: "${updatedData._id}",
+                updates: {
+                    name: "${updatedData.name}",
+                    Price: ${updatedData.Price},
+                    CountINStock: ${updatedData.CountINStock}
+                    description: "${updatedData.description}"
+                    images: "${updatedData.images}"
+                }
+            }) {
+                product {
+                    _id
+                    name
+                    Price
+                    CountINStock
+                }
+                message
+            }
+        }
+                    `,
+                },
                 {
                     headers: { Authorization: `Bearer ${localStorage.getItem('authtoken')}` },
                 }
             );
             if (response.status === 200) {
                 setProducts((prev) =>
-                    prev.map((item) => (item._id === updatedData._id ? updatedData as Collection : item))
+                    prev.map((item) => (item._id === updatedData._id ? updatedData as Article : item))
                 );
                 alert("Product updated successfully!");
             }
